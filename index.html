@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Consulta las ofertas de productos de Fruit Valley Patagonia de forma segura."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#173f35" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:title" content="Ofertas | Fruit Valley Patagonia" />
+    <meta
+      property="og:description"
+      content="Descubre las ofertas disponibles de Fruit Valley Patagonia."
+    />
+    <title>Ofertas | Fruit Valley Patagonia</title>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      :root {
+        --fv-ink: #18372e;
+        --fv-green: #26733f;
+        --fv-green-dark: #164a2a;
+        --fv-leaf: #68a735;
+        --fv-cream: #fff5df;
+        --fv-kraft: #e8b676;
+        --fv-sky: #49a9e8;
+        --fv-red: #e73b24;
+        --fv-yellow: #ffc43d;
+        --fv-line: rgba(24, 51, 45, 0.14);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+      }
+
+      body {
+        min-width: 320px;
+        color: var(--fv-ink);
+        background:
+          radial-gradient(circle at 5% 52%, rgba(255, 196, 61, 0.2), transparent 22rem),
+          var(--fv-cream);
+      }
+
+      .skip-link {
+        position: fixed;
+        top: 0.75rem;
+        left: 0.75rem;
+        z-index: 1100;
+        transform: translateY(-200%);
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .site-header {
+        background-color: rgba(255, 245, 223, 0.96);
+        border-bottom: 1px solid var(--fv-line);
+        backdrop-filter: blur(10px);
+      }
+
+      .brand-mark {
+        display: inline-grid;
+        width: 2.25rem;
+        height: 2.25rem;
+        place-items: center;
+        color: #fff;
+        font-weight: 800;
+        background: linear-gradient(145deg, var(--fv-leaf), var(--fv-green-dark));
+        border-radius: 50% 50% 45% 55%;
+        transform: rotate(-6deg);
+        box-shadow: 0 0.35rem 0 var(--fv-yellow);
+      }
+
+      .nav-link {
+        color: var(--fv-ink);
+        font-weight: 650;
+      }
+
+      .nav-link:hover,
+      .nav-link:focus-visible {
+        color: var(--fv-red);
+      }
+
+      .primary-nav {
+        width: 100%;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(3.5rem, 8vw, 7rem) 0;
+        color: var(--fv-ink);
+        background:
+          linear-gradient(115deg, rgba(255, 245, 223, 0.96) 0 47%, rgba(73, 169, 232, 0.22)),
+          var(--fv-cream);
+      }
+
+      .hero::before {
+        position: absolute;
+        top: -7rem;
+        left: -5rem;
+        width: 19rem;
+        height: 19rem;
+        content: "";
+        background: var(--fv-yellow);
+        border-radius: 50%;
+        opacity: 0.24;
+      }
+
+      .eyebrow {
+        color: var(--fv-red);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        max-width: 10ch;
+        font-size: clamp(2.5rem, 7vw, 5.25rem);
+        font-weight: 800;
+        letter-spacing: -0.055em;
+        line-height: 0.98;
+      }
+
+      .hero h1 span {
+        color: var(--fv-red);
+      }
+
+      .hero-copy {
+        max-width: 38rem;
+        color: #4f625c;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+
+      .hero-visual {
+        position: relative;
+        padding: 0.7rem;
+        background: var(--fv-kraft);
+        border: 3px solid var(--fv-ink);
+        border-radius: 2rem 2rem 2rem 0.6rem;
+        box-shadow:
+          1.1rem 1.1rem 0 var(--fv-green),
+          1.45rem 1.45rem 0 var(--fv-yellow);
+        transform: rotate(1.5deg);
+      }
+
+      .hero-visual img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 1.35rem 1.35rem 1.35rem 0.25rem;
+      }
+
+      .hero-stamp {
+        position: absolute;
+        top: -1.5rem;
+        right: -1.25rem;
+        display: grid;
+        width: 6.5rem;
+        height: 6.5rem;
+        padding: 0.8rem;
+        place-items: center;
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 800;
+        line-height: 1.1;
+        text-align: center;
+        text-transform: uppercase;
+        background: var(--fv-red);
+        border: 3px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0.4rem 0 var(--fv-ink);
+        transform: rotate(8deg);
+      }
+
+      .btn-fv-primary {
+        color: #fff;
+        font-weight: 700;
+        background: var(--fv-red);
+        border-color: var(--fv-red);
+        box-shadow: 0 0.3rem 0 #9f2718;
+      }
+
+      .btn-fv-primary:hover,
+      .btn-fv-primary:focus-visible {
+        color: #fff;
+        background: #c82d1c;
+        border-color: #c82d1c;
+        transform: translateY(1px);
+        box-shadow: 0 0.16rem 0 #8b2115;
+      }
+
+      .btn-hero {
+        color: #fff;
+        font-weight: 750;
+        background: var(--fv-green);
+        border: 2px solid var(--fv-green);
+        box-shadow: 0 0.35rem 0 var(--fv-green-dark);
+      }
+
+      .btn-hero:hover,
+      .btn-hero:focus-visible {
+        color: #fff;
+        background: var(--fv-green-dark);
+        border-color: var(--fv-green-dark);
+      }
+
+      .offers-section {
+        min-height: 28rem;
+        padding: clamp(4rem, 8vw, 7rem) 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+          repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 18px,
+            rgba(232, 182, 118, 0.13) 18px,
+            rgba(232, 182, 118, 0.13) 19px
+          );
+      }
+
+      .section-heading {
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        font-weight: 750;
+        letter-spacing: -0.04em;
+      }
+
+      .status-panel {
+        padding: clamp(2rem, 5vw, 3.5rem);
+        text-align: center;
+        background: #fff;
+        border: 2px solid var(--fv-green);
+        border-radius: 1.5rem;
+        box-shadow: 0.75rem 0.75rem 0 rgba(104, 167, 53, 0.2);
+      }
+
+      .offer-card {
+        overflow: hidden;
+        background: #fff;
+        border: 2px solid var(--fv-ink);
+        border-radius: 1.25rem;
+        box-shadow: 0.65rem 0.65rem 0 var(--fv-kraft);
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .offer-card:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0.75rem 0.85rem 0 var(--fv-yellow);
+      }
+
+      .offer-card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        background: #e8e6dd;
+      }
+
+      .offer-price {
+        color: var(--fv-red);
+        font-size: 1.35rem;
+        font-weight: 800;
+      }
+
+      .stock-badge {
+        color: #fff;
+        background: var(--fv-green);
+      }
+
+      .values-section {
+        position: relative;
+        padding: clamp(4rem, 8vw, 6.5rem) 0;
+        color: #fff;
+        background: var(--fv-green-dark);
+      }
+
+      .value-card {
+        height: 100%;
+        padding: 2rem;
+        color: var(--fv-ink);
+        background: var(--fv-cream);
+        border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+      }
+
+      .value-number {
+        display: grid;
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 1.25rem;
+        place-items: center;
+        color: #fff;
+        font-weight: 800;
+        background: var(--fv-red);
+        border-radius: 50%;
+      }
+
+      .user-name {
+        max-width: 13rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      footer {
+        color: var(--fv-ink);
+        background: var(--fv-yellow);
+        border-top: 3px solid var(--fv-ink);
+      }
+
+      .footer-signature {
+        font-weight: 800;
+        color: var(--fv-green-dark);
+      }
+
+      @media (max-width: 767.98px) {
+        .hero-visual {
+          margin: 1.5rem 0.85rem 1.5rem 0;
+          box-shadow:
+            0.7rem 0.7rem 0 var(--fv-green),
+            1rem 1rem 0 var(--fv-yellow);
+        }
+
+        .hero-stamp {
+          right: -0.75rem;
+          width: 5.4rem;
+          height: 5.4rem;
+          font-size: 0.68rem;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .primary-nav {
+          width: auto;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link btn btn-light" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header sticky-top">
+      <nav class="navbar py-3" aria-label="Navegación principal">
+        <div class="container flex-wrap gap-3">
+          <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#inicio">
+            <span class="brand-mark" aria-hidden="true">FV</span>
+            <span>Fruit Valley <span class="d-none d-sm-inline">Patagonia</span></span>
+          </a>
+
+          <ul
+            class="primary-nav navbar-nav order-3 order-lg-2 flex-row justify-content-center gap-3 gap-sm-4 ms-lg-auto me-lg-3"
+          >
+            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#ofertas">Ofertas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#esencia">Nuestra esencia</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2 gap-md-3 order-2 order-lg-3">
+            <span
+              id="userName"
+              class="user-name d-none d-md-inline text-secondary small"
+              aria-live="polite"
+            ></span>
+            <button id="authButton" class="btn btn-fv-primary rounded-pill px-3 px-md-4" type="button">
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section id="inicio" class="hero" aria-labelledby="heroTitle">
+        <div class="container position-relative z-1">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+              <p class="eyebrow mb-3">Directo desde la Patagonia</p>
+              <h1 id="heroTitle" class="mb-4">Sabores del sur, <span>más vivos.</span></h1>
+              <p class="hero-copy mb-4">
+                Frutas, granolas y preparaciones naturales con identidad patagónica. Inicia sesión
+                para descubrir nuestras ofertas de temporada.
+              </p>
+              <a class="btn btn-hero rounded-pill px-4 py-3" href="#ofertas">
+                Descubrir ofertas
+              </a>
+            </div>
+            <div class="col-lg-7">
+              <figure class="hero-visual mb-0">
+                <img
+                  src="multimedia/imagenesproductos/fruit-valley-patagonia.jpg"
+                  alt="Harina, chips de manzana y granola Fruit Valley Patagonia"
+                  width="2400"
+                  height="1792"
+                  fetchpriority="high"
+                />
+                <figcaption class="visually-hidden">
+                  Selección de productos naturales Fruit Valley Patagonia.
+                </figcaption>
+                <span class="hero-stamp" aria-hidden="true">100% sabor natural</span>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ofertas" class="offers-section" aria-labelledby="offersTitle">
+        <div class="container">
+          <div class="row align-items-end g-3 mb-4 mb-md-5">
+            <div class="col-md-8">
+              <p class="eyebrow text-success mb-2">Beneficios exclusivos</p>
+              <h2 id="offersTitle" class="section-heading mb-0">Ofertas</h2>
+            </div>
+            <div class="col-md-4 text-md-end">
+              <p id="sessionSummary" class="text-secondary mb-0">Disponible al iniciar sesión</p>
+            </div>
+          </div>
+
+          <div id="offersStatus" class="status-panel" role="status" aria-live="polite">
+            <h3 class="h5 mb-2">Inicia sesión para ver las ofertas</h3>
+            <p class="text-secondary mb-4">
+              Usa tu cuenta de Google para consultar los productos disponibles.
+            </p>
+            <button id="statusLoginButton" class="btn btn-fv-primary rounded-pill px-4" type="button">
+              Continuar con Google
+            </button>
+          </div>
+
+          <div id="offersGrid" class="row g-4" aria-live="polite" hidden></div>
+        </div>
+      </section>
+
+      <section id="esencia" class="values-section" aria-labelledby="valuesTitle">
+        <div class="container">
+          <header class="row mb-4 mb-lg-5">
+            <div class="col-lg-8">
+              <p class="eyebrow mb-2">Nuestra esencia</p>
+              <h2 id="valuesTitle" class="section-heading text-white mb-3">
+                Naturaleza que se convierte en alimento.
+              </h2>
+              <p class="lead text-white-50 mb-0">
+                Una propuesta inspirada en los paisajes, frutos y colores del sur.
+              </p>
+            </div>
+          </header>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <article class="value-card">
+                <span class="value-number" aria-hidden="true">01</span>
+                <h3 class="h4">Origen natural</h3>
+                <p class="mb-0 text-secondary">
+                  Productos que celebran ingredientes nobles y sabores reconocibles.
+                </p>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="value-card">
+                <span class="value-number" aria-hidden="true">02</span>
+                <h3 class="h4">Identidad local</h3>
+                <p class="mb-0 text-secondary">
+                  Una estética inspirada en las montañas, los bosques y los frutos patagónicos.
+                </p>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="value-card">
+                <span class="value-number" aria-hidden="true">03</span>
+                <h3 class="h4">Sabor cercano</h3>
+                <p class="mb-0 text-secondary">
+                  Alternativas simples para disfrutar todos los días y compartir en familia.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-4" aria-label="Información del sitio">
+      <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+        <span class="fw-bold">Fruit Valley Patagonia</span>
+        <span class="footer-signature">Eliana Roldan</span>
+        <span>Acceso protegido con Firebase Authentication</span>
+      </div>
+    </footer>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Fruit Valley Patagonia"
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+      import {
+        getAuth,
+        GoogleAuthProvider,
+        onAuthStateChanged,
+        signInWithPopup,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4X_PurStFzUSMmn1diJuLgj0K77i_Gfs",
+        authDomain: "fruit-valley-patagonia.firebaseapp.com",
+        projectId: "fruit-valley-patagonia",
+        storageBucket: "fruit-valley-patagonia.firebasestorage.app",
+        messagingSenderId: "511656598450",
+        appId: "1:511656598450:web:d4deb8e3f3810636a362ab",
+      };
+
+      const appsScriptUrl =
+        "https://script.google.com/macros/s/AKfycbx_h0wmGST13vALpse3g_1l3kPVbvjU1vzDHgyKYolczhUEyWb09EOXk8kxzN8zr4Oz/exec";
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      auth.languageCode = "es";
+
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: "select_account" });
+
+      const authButton = document.querySelector("#authButton");
+      const statusLoginButton = document.querySelector("#statusLoginButton");
+      const userName = document.querySelector("#userName");
+      const sessionSummary = document.querySelector("#sessionSummary");
+      const offersStatus = document.querySelector("#offersStatus");
+      const offersGrid = document.querySelector("#offersGrid");
+
+      let authenticatedUser = null;
+      let requestVersion = 0;
+
+      authButton.addEventListener("click", () => {
+        if (authenticatedUser) {
+          handleSignOut();
+        } else {
+          handleSignIn();
+        }
+      });
+
+      statusLoginButton.addEventListener("click", handleSignIn);
+
+      onAuthStateChanged(auth, (user) => {
+        authenticatedUser = user;
+        requestVersion += 1;
+
+        if (!user) {
+          renderSignedOutState();
+          return;
+        }
+
+        renderSignedInState(user);
+        loadOffers(user, requestVersion);
+      });
+
+      async function handleSignIn() {
+        setAuthButtonsDisabled(true);
+
+        try {
+          await signInWithPopup(auth, provider);
+        } catch (error) {
+          if (error?.code !== "auth/popup-closed-by-user") {
+            renderError(getAuthenticationMessage(error));
+          }
+        } finally {
+          setAuthButtonsDisabled(false);
+        }
+      }
+
+      async function handleSignOut() {
+        requestVersion += 1;
+        authenticatedUser = null;
+
+        // Los datos se eliminan antes de esperar la respuesta de Firebase.
+        renderSignedOutState();
+        setAuthButtonsDisabled(true);
+
+        try {
+          await signOut(auth);
+        } catch (error) {
+          renderError("No fue posible cerrar la sesión. Vuelve a intentarlo.");
+        } finally {
+          setAuthButtonsDisabled(false);
+        }
+      }
+
+      async function loadOffers(user, currentRequestVersion) {
+        renderLoading();
+
+        try {
+          const idToken = await user.getIdToken();
+
+          if (!isCurrentRequest(user, currentRequestVersion)) {
+            return;
+          }
+
+          /*
+           * text/plain mantiene la petición como una solicitud CORS simple.
+           * Apps Script recibe el JSON en e.postData.contents y Google gestiona
+           * la redirección de ContentService automáticamente.
+           */
+          const response = await fetch(appsScriptUrl, {
+            method: "POST",
+            mode: "cors",
+            redirect: "follow",
+            headers: {
+              "Content-Type": "text/plain;charset=UTF-8",
+            },
+            body: JSON.stringify({ idToken }),
+          });
+
+          if (!isCurrentRequest(user, currentRequestVersion)) {
+            return;
+          }
+
+          if (!response.ok) {
+            throw new Error(`El servicio respondió con HTTP ${response.status}.`);
+          }
+
+          const result = await response.json();
+
+          if (result?.ok !== true) {
+            const serviceMessage =
+              typeof result?.message === "string"
+                ? result.message
+                : "El servicio rechazó la solicitud.";
+            throw new Error(serviceMessage);
+          }
+
+          if (!Array.isArray(result.data)) {
+            throw new Error('La respuesta del servicio no contiene un arreglo válido en "data".');
+          }
+
+          const offers = result.data.map(validateOffer);
+
+          if (offers.length === 0) {
+            renderEmpty();
+            return;
+          }
+
+          renderOffers(offers);
+        } catch (error) {
+          if (isCurrentRequest(user, currentRequestVersion)) {
+            renderError(
+              error instanceof Error
+                ? error.message
+                : "No fue posible consultar las ofertas.",
+            );
+          }
+        }
+      }
+
+      function validateOffer(offer, index) {
+        const requiredFields = ["Producto", "Descripcion", "Precio", "imagen", "stock"];
+
+        if (!offer || typeof offer !== "object" || Array.isArray(offer)) {
+          throw new Error(`La oferta ${index + 1} no tiene una estructura válida.`);
+        }
+
+        const missingFields = requiredFields.filter(
+          (field) => !Object.prototype.hasOwnProperty.call(offer, field),
+        );
+
+        if (missingFields.length > 0) {
+          throw new Error(
+            `La oferta ${index + 1} no coincide con el servicio: faltan ${missingFields.join(", ")}.`,
+          );
+        }
+
+        return offer;
+      }
+
+      function renderSignedInState(user) {
+        const displayName = user.displayName || user.email || "Usuario";
+        userName.textContent = displayName;
+        userName.classList.remove("d-none");
+        userName.classList.add("d-md-inline");
+        authButton.textContent = "Cerrar sesión";
+        sessionSummary.textContent = `Sesión iniciada como ${displayName}`;
+      }
+
+      function renderSignedOutState() {
+        clearOffers();
+        userName.textContent = "";
+        userName.classList.add("d-none");
+        userName.classList.remove("d-md-inline");
+        authButton.textContent = "Iniciar sesión";
+        sessionSummary.textContent = "Disponible al iniciar sesión";
+        showStatus(
+          "Inicia sesión para ver las ofertas",
+          "Usa tu cuenta de Google para consultar los productos disponibles.",
+          true,
+        );
+      }
+
+      function renderLoading() {
+        clearOffers();
+        offersStatus.hidden = false;
+        offersStatus.replaceChildren();
+
+        const spinner = document.createElement("div");
+        spinner.className = "spinner-border text-success mb-3";
+        spinner.setAttribute("aria-hidden", "true");
+
+        const message = document.createElement("p");
+        message.className = "mb-0";
+        message.textContent = "Cargando ofertas…";
+
+        offersStatus.append(spinner, message);
+      }
+
+      function renderEmpty() {
+        showStatus(
+          "No hay ofertas disponibles",
+          "En este momento no encontramos ofertas habilitadas. Vuelve a consultar más tarde.",
+          false,
+        );
+      }
+
+      function renderError(message) {
+        showStatus(
+          "No pudimos cargar las ofertas",
+          message || "Ocurrió un error inesperado. Vuelve a intentarlo.",
+          false,
+        );
+      }
+
+      function showStatus(titleText, messageText, showLoginButton) {
+        clearOffers();
+        offersStatus.hidden = false;
+        offersStatus.replaceChildren();
+
+        const title = document.createElement("h3");
+        title.className = "h5 mb-2";
+        title.textContent = titleText;
+
+        const message = document.createElement("p");
+        message.className = showLoginButton ? "text-secondary mb-4" : "text-secondary mb-0";
+        message.textContent = messageText;
+
+        offersStatus.append(title, message);
+
+        if (showLoginButton) {
+          offersStatus.append(statusLoginButton);
+        }
+      }
+
+      function renderOffers(offers) {
+        offersStatus.hidden = true;
+        offersGrid.replaceChildren();
+        offersGrid.hidden = false;
+
+        offers.forEach((offer) => {
+          const column = document.createElement("div");
+          column.className = "col-12 col-sm-6 col-lg-4";
+
+          const article = document.createElement("article");
+          article.className = "card offer-card h-100";
+
+          const image = document.createElement("img");
+          image.src = String(offer.imagen);
+          image.alt = `Imagen de ${String(offer.Producto)}`;
+          image.loading = "lazy";
+          image.decoding = "async";
+          image.addEventListener(
+            "error",
+            () => {
+              image.removeAttribute("src");
+              image.alt = `No hay una imagen disponible para ${String(offer.Producto)}`;
+            },
+            { once: true },
+          );
+
+          const body = document.createElement("div");
+          body.className = "card-body d-flex flex-column p-4";
+
+          const topRow = document.createElement("div");
+          topRow.className = "d-flex align-items-start justify-content-between gap-3 mb-3";
+
+          const title = document.createElement("h3");
+          title.className = "h4 card-title mb-0";
+          title.textContent = String(offer.Producto);
+
+          const stock = document.createElement("span");
+          stock.className = "badge stock-badge rounded-pill";
+          stock.textContent = `Stock: ${String(offer.stock)}`;
+
+          const description = document.createElement("p");
+          description.className = "card-text text-secondary flex-grow-1";
+          description.textContent = String(offer.Descripcion);
+
+          const price = document.createElement("p");
+          price.className = "offer-price mb-0";
+          price.textContent = formatPrice(offer.Precio);
+
+          topRow.append(title, stock);
+          body.append(topRow, description, price);
+          article.append(image, body);
+          column.append(article);
+          offersGrid.append(column);
+        });
+      }
+
+      function clearOffers() {
+        offersGrid.replaceChildren();
+        offersGrid.hidden = true;
+      }
+
+      function formatPrice(value) {
+        if (typeof value === "number" && Number.isFinite(value)) {
+          return new Intl.NumberFormat("es-CL", {
+            style: "currency",
+            currency: "CLP",
+            maximumFractionDigits: 0,
+          }).format(value);
+        }
+
+        return String(value);
+      }
+
+      function isCurrentRequest(user, currentRequestVersion) {
+        return (
+          currentRequestVersion === requestVersion &&
+          auth.currentUser?.uid === user.uid
+        );
+      }
+
+      function setAuthButtonsDisabled(disabled) {
+        authButton.disabled = disabled;
+        statusLoginButton.disabled = disabled;
+      }
+
+      function getAuthenticationMessage(error) {
+        switch (error?.code) {
+          case "auth/popup-blocked":
+            return "El navegador bloqueó la ventana de acceso. Habilita las ventanas emergentes.";
+          case "auth/unauthorized-domain":
+            return "Este dominio no está autorizado en Firebase Authentication.";
+          case "auth/network-request-failed":
+            return "No se pudo conectar con Firebase. Revisa tu conexión.";
+          default:
+            return "No fue posible iniciar sesión con Google. Vuelve a intentarlo.";
+        }
+      }
+    </script>
+  </body>
+</html>
